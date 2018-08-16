@@ -43,6 +43,7 @@ def retrieve_reuters_documents(max_documents=-1, filter_words=True):
         words_filtered = do_filter_words(words)
         document = {
             'words': words,
+            'title': reuters.raw(fileids=file_id).split("\n")[0],
             'categories': reuters.categories(fileids=file_id),
             'is_training_example': True if 'training/' in file_id else False,
             'is_test_example': True if 'test/' in file_id else False,
